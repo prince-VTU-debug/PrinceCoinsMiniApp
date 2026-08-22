@@ -21,12 +21,8 @@
     tg.expand();
 
     document.getElementById("watch").onclick = function () {
-      const userId = tg.initDataUnsafe.user?.id;
-
-      if (!userId) {
-        alert("❌ Telegram user not detected.");
-        return;
-      }
+      const userId = tg.initDataUnsafe.user?.id || "unknown";
+const ymid = "ad_" + userId + "_" + Date.now();
 
       const ymid = "user_" + userId + "_" + Date.now();
 
