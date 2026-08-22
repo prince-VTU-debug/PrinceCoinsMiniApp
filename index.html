@@ -6,8 +6,9 @@
   <title>Prince Coins</title>
 
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <script src='//libtl.com/sdk.js' data-zone='11617024' data-sdk='show_11617024'></script>
+  <script src="//libtl.com/sdk.js" data-zone="11617024" data-sdk="show_11617024"></script>
 </head>
+
 <body>
   <h1>👑 Prince Coins</h1>
   <p>Welcome to Prince Coins!</p>
@@ -20,7 +21,21 @@
     tg.expand();
 
     document.getElementById("watch").onclick = function () {
-      alert("🎬 Rewarded Video will be connected here.");
+      const userId = tg.initDataUnsafe.user?.id;
+
+      if (!userId) {
+        alert("❌ Telegram user not detected.");
+        return;
+      }
+
+      const ymid = "user_" + userId + "_" + Date.now();
+
+      show_11617024({
+        ymid: ymid,
+        requestVar: "watch_video"
+      }).then(() => {
+        alert("🎉 Ad completed!");
+      });
     };
   </script>
 </body>
